@@ -1,0 +1,12 @@
+header.masthead {
+    height: fit-content !important;
+    min-height: 20lvh !important;
+    padding-top: 4.5rem;
+    padding-bottom: 0;
+}
+
+.alt_btn {
+    width: 50%;
+    display: grid;
+    justify-self: center;
+}

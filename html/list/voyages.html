@@ -1,0 +1,93 @@
+{% extends 'home.html' %} {% load countries %}
+<br>{%block title%}All voyages of {{country_n}} {%endblock%}
+
+<br>{%block nv_div_1%}{% include 'navbar_model_1.html' %}{%endblock%}
+<br>{%block header_x%}
+
+<div class="cont_model_1">
+    <h1 class="tit_h">Find All your voyages of {{country_n}} </h1>
+
+    <form action="" method="get" class="form_struct" novalidate>
+
+        <h4>search for ship number to verify it's arrival time and it's LIVE Status</h4>
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+            <input class="form-control" id="ship_id" name="ship_id" type="number" value="1" min="1" max="{{max_filter}}" placeholder="Enter your name..." data-sb-validations="required" />
+            <button type="submit" class="btn btn-primary btn-xl" style="margin-top: 20px;">find the ship id</button>
+            <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <div {% if message.tags %} class="msg_model {{ message.tags }}" {% endif %}>
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+    </form>
+</div>
+
+{%endblock%}
+<br>{%block body%}
+<div class="cont_model_2">
+    {# 'posted_by','ship_name','from_country_x','start_date','to_country_y','end_date','made_in','bio',#} {% if voy_filter %}
+
+
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>S ID</th>
+                <th>Ship name</th>
+                <th>From country</th>
+                <th>Start date</th>
+                <th>To country</th>
+                <th>Arrival date</th>
+                <th>made in</th>
+                <th> Doc status</th>
+                <th> BL status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if target_voy %}
+            <tr>
+                <td>{{target_voy.pk}}</td>
+                <td>{{target_voy.ship_name}}</td>
+                <td>{{target_voy.country_A}}</td>
+                <td>{{target_voy.start_date}}</td>
+
+                <td>{{target_voy.country_B}}</td>
+                <td>{{target_voy.end_date}}</td>
+                <td>{{target_voy.made_in}}</td>
+                <td>{{target_voy.doc_status_validation}}</td>
+                <td>{{target_voy.tracking_status}}</td>
+            </tr>
+            {% else %} {% for v in voy_filter %}
+            <tr>
+                <td>{{v.pk}}</td>
+                <td><a href="">{{v.ship_name}}</a></td>
+                <td>{{v.country_A}}</td>
+                <td>{{v.start_date}}</td>
+
+                <td>{{v.country_B}}</td>
+                <td>{{v.end_date}}</td>
+                <td>{{v.made_in}}</td>
+
+                <td>{{v.doc_status_validation}}</td>
+                <td>{{v.tracking_status}}</td>
+
+
+            </tr>
+            {% endfor %} {% endif %}
+
+        </tbody>
+    </table>
+
+    {% else %}
+    <h1 class="h_tit">No Voyages till now</h1>
+    {% endif %}
+
+</div>
+{%endblock%}

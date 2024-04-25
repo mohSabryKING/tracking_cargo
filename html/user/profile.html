@@ -1,0 +1,18 @@
+{% extends 'home.html' %}
+<br>{%block title%}LOGIN{%endblock%}
+<br>{%block nv_div_1%}{% include 'navbar_model_1.html' %}{%endblock%}
+<br>{%block header_x%}
+
+<div class="cont_model_1">
+    <h1 class="tit_h">LOGIN</h1>
+
+    <form action="" method="post" class="form_struct" novalidate>
+        {% csrf_token %}{{form.as_div}}
+        <button type="submit" class="btn_model">submit</button>
+        <p>dont have any accounts</p>
+        <a href="{% url 'reg' %}" class="btn_model">Register</a>
+    </form>
+</div>
+
+{%endblock%}
+<br>{%block body%}{%endblock%}

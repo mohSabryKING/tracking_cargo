@@ -1,0 +1,27 @@
+{% extends 'home.html' %}
+<br>{%block title%}FIND A CARGO{%endblock%}
+<br>{%block nv_div_1%}{% include 'navbar_model_1.html' %}{%endblock%}
+<br>{%block header_x%}
+
+<div class="cont_model_1">
+    <h1 class="tit_h">Find your ship voyage ID num:</h1>
+
+    <form action="" method="get" class="form_struct" novalidate>
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+            <input class="form-control" id="q_voy" name="q_voy" type="search" placeholder="Enter your name..." data-sb-validations="required" />
+            <button type="submit" class="btn btn-primary btn-xl" style="margin-top: 20px;">find the ship id</button>
+            <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+        </div>
+
+    </form>
+</div>
+
+{%endblock%}
+<br>{%block body%}
+<div class="cont_model_2">
+
+
+
+</div>
+{%endblock%}

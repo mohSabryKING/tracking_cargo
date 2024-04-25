@@ -1,0 +1,56 @@
+{% extends 'home.html' %}
+<br>{%block title%}{{main_ship.ship_name}}{%endblock%}
+<br>{%block nv_div_1%}{% include 'navbar_model_1.html' %}{%endblock%}
+<br>{%block header_x%}
+
+<div class="cont_model_1">
+    <h1 class="tit_h">Explore your goods status:</h1>
+
+    <form action="" method="get" class="form_struct" novalidate>
+        <h4>search for {{main_ship.ship_name}} {{main_ship.pk}} goods in this voyage to veryfy it's Status</h4>
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+            <input class="form-control" id="q_voy" name="q_voy" type="search" placeholder="Enter your name..." data-sb-validations="required" />
+            <button type="submit" class="btn btn-primary btn-xl" style="margin-top: 20px;">find the ship id</button>
+            <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+        </div>
+
+    </form>
+</div>
+
+{%endblock%}
+<br>{%block body%}
+<div class="cont_model_2">
+
+
+    <ul>
+        <div class="row_data_model_1">
+            <b>C id</b>
+            <b>title</b>
+            <b>posted in</b>
+
+            <b>ship contents</b>
+        </div>
+        {% if ship_cargos %} {% if target_voy %}
+        <li class="row_data_model_1">
+            <p>{{target_voy.pk}}</p>
+            <p>{{target_voy.cargo_title}}</p>
+            <p>{{target_voy.made_in}}</p>
+            <p><a href="" class="btn_model">contents</a></p>
+        </li>
+        {% else %} {% for v in ship_cargos %}
+        <li class="row_data_model_1">
+            <p>{{v.pk}}</p>
+            <p><a href="">{{v.cargo_title}}</a></p>
+            <p>{{v.made_in}}</p>
+
+            <p><a href="" class="btn_model">contents</a></p>
+        </li>
+        {% endfor %} {% endif %}
+
+    </ul>
+    {% else %}
+    <h1 class="h_tit">No Voyages till now</h1>
+    {% endif %}
+</div>
+{%endblock%}

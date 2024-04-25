@@ -1,0 +1,15 @@
+{% extends 'home.html' %}
+<br>{%block title%}LOGOUT{%endblock%}
+<br>{%block nv_div_1%}{% include 'navbar_model_1.html' %}{%endblock%}
+<br>{%block header_x%}
+
+<div class="cont_model_1">
+    <h1 class="tit_h">YOU HAVE BEEN LOGGED OUT</h1>
+
+    <form action="" method="post" class="form_struct" novalidate>
+        {% csrf_token %} {{form.as_li}}
+    </form>
+</div>
+
+{%endblock%}
+<br>{%block body%}{%endblock%}
